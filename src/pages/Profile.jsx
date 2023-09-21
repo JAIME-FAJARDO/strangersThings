@@ -10,6 +10,7 @@ export default function Profile ({ token }) {
     return (
         <div>
             <h1>Profile</h1>
+            <p>test</p>
         </div>
     )
 }
