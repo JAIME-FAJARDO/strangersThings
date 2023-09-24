@@ -9,14 +9,14 @@ import { useNavigate } from 'react-router-dom'
 export default function Login ({setToken}) {
     // TODO signin with correct username/password combo
     const navigate = useNavigate();
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    // const [username, setUsername] = useState('')
+    // const [password, setPassword] = useState('')
     
-    async function handleSubmit (e) {
+    async function handleSubmit (e, username, password) {
         e.preventDefault();
         const token = await loginUser(username, password);
         
-        console.log(token)
+        console.log("this is a token",token)
         setToken(token);
         localStorage.setItem('token', token);
         navigate('/');

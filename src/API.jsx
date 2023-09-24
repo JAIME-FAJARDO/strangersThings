@@ -1,4 +1,4 @@
-const COHORT_NAME = '23302-ACC-ET-WEB-PT-A'
+const COHORT_NAME = '2302-ACC-ET-WEB-PT-A'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export const fetchPosts = async () => {
@@ -23,15 +23,15 @@ export const registerUser = async (username, password) => {
         },
         body: JSON.stringify({
           user: {
-            username,
-            password
+            username: username,
+            password: password
           }
         })
       });
       const result = await response.json();
 // You can log ▲▲▲ the result
 // here ▼▼▼ to view the json object before returning it
-      console.log(result)
+      console.log("result from Registeruser", result)
       return result.data.token;
     } catch (err) {
       console.error(err);
@@ -48,8 +48,8 @@ export const registerUser = async (username, password) => {
         },
         body: JSON.stringify({
           user: {
-            username,
-            password
+            username:username,
+            password:password
           }
         })
       });
@@ -63,18 +63,18 @@ export const registerUser = async (username, password) => {
     }
   }
 
-  export const profileData = async (token) => {
+  export const profileData = async ( token) => {
 
     try {
       const response = await fetch(`${BASE_URL}/users/me`, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+          'Authorization': `Bearer ${token}`
         },
       });
       const result = await response.json();
       console.log(result);
-      return result
+      return result.data;
     } catch (err) {
       console.error(err);
     }
